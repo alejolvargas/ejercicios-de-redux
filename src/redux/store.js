@@ -1,6 +1,7 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
 import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 //midleware
 
@@ -19,6 +20,15 @@ const confirDeleteTodo = (store) => (next) => (action) => {
     next(action);
   }
 };
+
+//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const composeEnhancers = composeWithDevTools({
+  name: "redux",
+  realtime: true,
+  trace: true,
+  traceLimit: 20,
+});
 
 /* 
 const logger = (store) => (next) => (action) => {
@@ -47,7 +57,7 @@ const logger = (store) => (next) => (action) => {
 // Almacenamiento de nuestro estado
 const store = createStore(
   rootReducer,
-  applyMiddleware(confirDeleteTodo, looger, thunk)
+  composeEnhancers(applyMiddleware(confirDeleteTodo, looger, thunk))
 );
 
 export default store;

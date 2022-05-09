@@ -7,17 +7,18 @@ import Info from "./components/Info"; */
 
 //import Fruits from "./components/Fruits";
 //import Todos from "./components/Todos";
-import Controller from "./components/Controller";
-
+//import Controller from "./components/Controller";
+import Blog from "./components/Blog";
 const App = () => {
   return (
     <Provider store={store}>
       <div>
-        <Controller />
+        {/*  <Controller /> */}
         {/*    <Todos /> */}
         {/*  <Fruits /> */}
         {/*   <Info />
         <Counter /> */}
+        <Blog />
       </div>
     </Provider>
   );
